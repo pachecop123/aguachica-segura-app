@@ -25,7 +25,7 @@ watch(() => props.camera, (newCamera) => {
         </div>
         <div class="modal-body" v-if="camera">
           <p>{{ camera.name }} ha enviado una alerta.</p>
-          <a :href="camera.stream" target="_blank">Ver transmisión</a>
+          <a :href="camera.stream" target="_blank" class="btn btn-primary">Ver transmisión</a>
         </div>
       </div>
     </div>
