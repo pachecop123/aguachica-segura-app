@@ -120,7 +120,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 // Datos de ejemplo para usuarios
 const users = ref([
@@ -193,7 +193,9 @@ const saveUser = () => {
   if (isEditing.value) {
     // Actualizar usuario existente
     const index = users.value.findIndex((u) => u.id === currentUser.value.id);
-    users.value[index] = { ...currentUser.value };
+    if (index !== -1) {
+      users.value[index] = { ...currentUser.value };
+    }
   } else {
     // Crear nuevo usuario
     currentUser.value.id = users.value.length + 1;
@@ -206,11 +208,27 @@ const saveUser = () => {
 const deleteUser = (userId) => {
   users.value = users.value.filter((user) => user.id !== userId);
 };
+
+// Cerrar modal al hacer clic fuera del modal
+const handleClickOutside = (event) => {
+  if (event.target.classList.contains('modal')) {
+    closeModal();
+  }
+};
+
+// Escuchar cambios en isModalOpen
+watch(isModalOpen, (newValue) => {
+  if (newValue) {
+    document.addEventListener('click', handleClickOutside);
+  } else {
+    document.removeEventListener('click', handleClickOutside);
+  }
+});
 </script>
 
 <style scoped>
 .modal {
-  display: block;
+  display: none;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .modal.show {

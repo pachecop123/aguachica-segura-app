@@ -1,18 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import UserManagement from '../components/UserManagement.vue'; // Importa el componente
+import CameraList from '@/components/CameraList.vue';
+import UserManagement from '@/components/UserManagement.vue';
+import EventView from '@/components/EventView.vue'; // Tu componente actual
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-  },
-  {
-    path: '/users', // Nueva ruta para el componente UserManagement
-    name: 'UserManagement',
-    component: UserManagement, // Asegúrate de que el componente esté correctamente importado
-  },
+  { path: '/', component: EventView }, // Ruta por defecto
+  { path: '/cameras', component: CameraList },
+  { path: '/users', component: UserManagement },
 ];
 
 const router = createRouter({

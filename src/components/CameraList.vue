@@ -62,6 +62,12 @@ const simulateEvent = () => {
   showNotification();
 };
 
+const clearFilters = () => {
+  searchQuery.value = "";
+  startDate.value = "";
+  endDate.value = "";
+};
+
 const filteredEvents = computed(() => {
   if (!validateDates()) return [];
   return events.value.filter(event => 
@@ -99,7 +105,7 @@ setInterval(simulateEvent, 3000);
 
 <template>
   <div :class="{'dark-mode': darkMode}" class="container">
-    <button @click="toggleDarkMode" class="toggle-dark-mode">Modo Oscuro</button>
+    <!-- <button @click="toggleDarkMode" class="toggle-dark-mode">Modo Oscuro</button> -->
     <div class="row">
       <!-- Listado de Usuarios -->
       <div class="col-md-4 user-list">
@@ -122,6 +128,7 @@ setInterval(simulateEvent, 3000);
           <input type="text" class="form-control" placeholder="Buscar eventos..." v-model="searchQuery" />
           <input type="date" class="form-control" v-model="startDate" />
           <input type="date" class="form-control" v-model="endDate" />
+          <button @click="clearFilters" class="clear-filters-button">Limpiar</button>
         </div>
         <div v-if="paginatedEvents.length">
           <div 
@@ -240,5 +247,18 @@ setInterval(simulateEvent, 3000);
 .pagination button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+.clear-filters-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.clear-filters-button:hover {
+  background-color: #c82333;
 }
 </style>
