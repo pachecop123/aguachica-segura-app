@@ -1,13 +1,13 @@
-<script setup></script>
+<script setup>
+import CameraList from '../src/components/CameraList.vue';
+</script>
 
 <template>
   <div>
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">Monitoreo de Cámaras</a>
-      </div>
-    </nav>
-    
-    <router-view />
+    <CameraList />
   </div>
 </template>
+
+<style>
+/* Aquí puedes agregar estilos globales si es necesario */
+</style>
