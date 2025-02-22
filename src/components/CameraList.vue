@@ -120,7 +120,7 @@ setInterval(simulateEvent, 3000);
           </li>
         </ul>
       </div>
-
+<!-- cao -->
       <!-- Eventos del Usuario Seleccionado -->
       <div class="col-md-8 event-list">
         <h2>Eventos de {{ selectedUser ? selectedUser.name : '...' }}</h2>
@@ -131,7 +131,7 @@ setInterval(simulateEvent, 3000);
           <button @click="clearFilters" class="clear-filters-button">Limpiar</button>
         </div>
         <div v-if="paginatedEvents.length">
-          <div 
+          <div
             v-for="event in paginatedEvents" 
             :key="event.id" 
             class="event-card" 
