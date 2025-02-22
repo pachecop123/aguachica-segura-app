@@ -135,7 +135,7 @@ setInterval(simulateEvent, 3000);
             v-for="event in paginatedEvents" 
             :key="event.id" 
             class="event-card" 
-            :class="{'dark-mode': darkMode}">
+            :class="{'dark-mode': darkMode}"> -->
             <p>{{ event.description }}</p>
             <div class="timestamp">{{ event.timestamp }}</div>
           </div>
@@ -217,6 +217,7 @@ setInterval(simulateEvent, 3000);
 .dark-mode {
   background-color: #121212;
   color: white;
+
 }
 .dark-mode .user-list {
   background-color: #1e1e1e;
